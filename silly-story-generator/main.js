@@ -1,6 +1,6 @@
 const customName = document.getElementById('customname');
 const randomize = document.querySelector('.randomize');
-const story = document.querySelector('.sotry');
+const story = document.querySelector('.story');
 
 function randomValueFromArray(array) {
     const random = Math.floor(Math.random() * array.length);
@@ -15,15 +15,26 @@ let insertZ = ['spontaneously combusted', 'melted into a puddle on the sidewalk'
 randomize.addEventListener('click', result);
 
 function result() {
+    let newStory = storyText;
+    let xItem = randomValueFromArray(insertX);
+    let yItem = randomValueFromArray(insertY);
+    let zItem = randomValueFromArray(insertZ);
+    newStory = newStory.replace(/:insertx:/g, xItem);
+    newStory = newStory.replace(/:inserty:/g, yItem);
+    newStory = newStory.replace(/:insertz:/g, zItem);
+
     if (customName.value !== '') {
         let name = customName.value;
+        newStory = newStory.replace('Bob', name);
     }
 
     if (document.getElementById("uk").checked) {
-        let weight = Math.round(300);
-        let temperature = Math.round(94);
+        let weight = Math.round(300 / 14);
+        let temperature = Math.round((94 - 32) * 5 / 9);
+        newStory = newStory.replace('300 pounds', `${weight} stones`);
+        newStory = newStory.replace('94 fahrenheit', `${temperature} centigrade`);
     }
 
-    story.textContent = ;
-    story.getElementsByClassName.visibility = 'visible';
+    story.textContent = newStory;
+    story.style.visibility = 'visible';
 }
