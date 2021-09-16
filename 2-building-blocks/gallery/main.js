@@ -10,8 +10,8 @@ for (let i = 1; i < 6; i++) {
     const newImage = document.createElement('img');
     newImage.setAttribute('src', imageUrl);
     thumbBar.appendChild(newImage);
-
-    newImage.onclick = function () {
-        displayedImage.setAttribute('src', imageUrl)
-    }
 }
+
+thumbBar.addEventListener('click', function (e) {
+    displayedImage.src = e.target.src;
+});
