@@ -15,3 +15,16 @@ for (let i = 1; i < 6; i++) {
 thumbBar.addEventListener('click', function (e) {
     displayedImage.src = e.target.src;
 });
+
+btn.onclick = function () {
+    const className = btn.getAttribute('class');
+    if (className === 'dark') {
+        btn.setAttribute('class', 'light');
+        btn.textContent = 'Lighten';
+        overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+    } else if (className === 'light') {
+        btn.setAttribute('class', 'dark');
+        btn.textContent = 'Darken';
+        overlay.style.backgroundColor = 'rgba(0,0,0,0)';
+    }
+}
