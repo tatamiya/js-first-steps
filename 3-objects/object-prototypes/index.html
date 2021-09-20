@@ -21,9 +21,9 @@
         this.gender = gender;
         this.interests = interests;
 
-        this.greeting = function () {
-            alert('Hi! I\'m ' + this.name.first + '.');
-        };
+    };
+    Person.prototype.greeting = function () {
+        alert('Hi! I\'m ' + this.name.first + '.');
     };
 
     let person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
@@ -39,12 +39,52 @@
     // person1.constructor.name
     // >> "Person"
 
-    // # Modifying prototypes
+    // ## Modifying prototypes
     Person.prototype.farewell = function () {
         alert(this.name.first + ' has left the building. Bye for now!');
     };
 
+    // # Inheritance in JavaScript
+    // ## Defining a Teacher() constructor function
+    function Teacher(first, last, age, gender, interests, subject) {
+        Person.call(this, first, last, age, gender, interests);
 
+        this.subject = subject;
+    };
+    // Object.getOwnPropertyNames(Teacher.prototype)
+    // >> ["constructor"]
+    //
+    // Object.getOwnPropertyNames(Person.prototype)
+    // >> ["constructor", "greeting", "farewell"]
+
+    // ## Setting Teacher()'s prototype and constructor reference
+    Teacher.prototype = Object.create(Person.prototype);
+    // Teacher.prototype.constructor
+    // >> Person(first, last, age, gender, interests) {...
+    Object.defineProperty(Teacher.prototype, 'constructor', {
+        value: Teacher,
+        enumerable: false,
+        writable: true
+    });
+    // Teacher.prototype.constructor
+    // >> Teacher(first, last, age, gender, interests, subject) { ...
+
+    // ## Giving Teacher() a new greeting() function
+    Teacher.prototype.greeting = function () {
+        let prefix;
+
+        if (this.gender === 'male') {
+            prefix = 'Mr.';
+        } else if (this.gender === 'female') {
+            prefix = 'Ms.';
+        } else {
+            prefix = 'Mx.';
+        }
+
+        alert('Hello. My name is ' + prefix + ' ' + this.name.last + ', and I teach ' + this.subject + '.');
+    };
+
+    let teacher1 = new Teacher('Dave', 'Griffiths', 31, 'male', ['football', 'cookery'], 'mathematics');
 </script>
 
 </html>
