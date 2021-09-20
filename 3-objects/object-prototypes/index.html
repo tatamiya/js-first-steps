@@ -11,6 +11,40 @@
 </body>
 <script>
 
+    function Person(first, last, age, gender, interests) {
+
+        this.name = {
+            'first': first,
+            'last': last
+        };
+        this.age = age;
+        this.gender = gender;
+        this.interests = interests;
+
+        this.greeting = function () {
+            alert('Hi! I\'m ' + this.name.first + '.');
+        };
+    };
+
+    let person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
+    // person1.__proto__
+    // >> {constructor: ƒ}
+    let person2 = Object.create(person1);
+    // person2.__proto__
+    // >> Person {name: {…}, age: 32, gender: "male", interests: Array(2), greeting: ƒ}
+    let person3 = new person1.constructor('Karen', 'Stephenson', 26, 'female', ['playing drums', 'mountain climbing']);
+    // person3.__proto__
+    // >> {constructor: ƒ}
+
+    // person1.constructor.name
+    // >> "Person"
+
+    // # Modifying prototypes
+    Person.prototype.farewell = function () {
+        alert(this.name.first + ' has left the building. Bye for now!');
+    };
+
+
 </script>
 
 </html>
