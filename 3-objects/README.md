@@ -7,3 +7,4 @@ https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects
   - ./object-prototypes
 - [Working with JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
   - ./working-with-json
+- [Object building practice](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_building_practice)
