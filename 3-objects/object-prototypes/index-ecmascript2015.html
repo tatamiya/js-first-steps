@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ECMAScript 2015 Classes</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Person {
+        constructor(first, last, age, gender, interests) {
+            this.name = {
+                first, last
+            };
+            this.age = age;
+            this.gender = gender;
+            this.interests = interests;
+        }
+
+        greeting() {
+            console.log(`Hi! I'm ${this.name.first}!`);
+        };
+
+        farewell() {
+            console.log(`${this.name.first} has left the building. Bye for now!`);
+        }
+    }
+
+    let han = new Person('Han', 'Solo', 25, 'male', ['Smuggling']);
+    han.greeting();
+
+    let leia = new Person('Leia', 'Organa', 19, 'female', ['Government']);
+    leia.farewell();
+
+    // ## Inheritance with class syntax
+    class Teacher extends Person {
+        constructor(first, last, age, gender, interests, subject, grade) {
+            super(first, last, age, gender, interests);
+
+            this.subject = subject;
+            this.grade = grade;
+        }
+    }
+
+    let snape = new Teacher('Severus', 'Snape', 58, 'male', ['Ptions'], 'Dark arts', 5);
+    snape.greeting();
+    snape.farewell();
+
+</script>
+
+</html>
