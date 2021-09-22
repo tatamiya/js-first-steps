@@ -61,6 +61,20 @@ while (balls.length < 25) {
     balls.push(ball);
 }
 
+Ball.prototype.collisionDetect = function () {
+    for (let j = 0; j < balls.length; j++) {
+        if (!(this === balls[j])) {
+            const dx = this.x - balls[j].x;
+            const dy = this.y - balls[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < this.size + balls[j].size) {
+                balls[j].color = this.color = 'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')';
+            }
+        }
+    }
+}
+
 function loop() {
     ctx.fillStyle = 'rgba(0,0,0,0.25)';
     ctx.fillRect(0, 0, width, height);
@@ -68,9 +82,10 @@ function loop() {
     for (let i = 0; i < balls.length; i++) {
         balls[i].draw();
         balls[i].update();
+        balls[i].collisionDetect();
 
-        requestAnimationFrame(loop);
     }
+    requestAnimationFrame(loop);
 }
 
 loop();
