@@ -16,7 +16,7 @@ class Shape {
         this.y = y;
         this.velX = velX;
         this.velY = velY;
-        this.exsists = exists;
+        this.exists = exists;
     }
 }
 
@@ -66,6 +66,14 @@ class Ball extends Shape {
 
         this.x += this.velX;
         this.y += this.velY;
+    }
+}
+
+class EvilCircle extends Shape {
+    constructor(x, y, exists) {
+        super(x, y, 20, 20, exists)
+        this.color = 'white';
+        this.size = 10;
     }
 }
 
