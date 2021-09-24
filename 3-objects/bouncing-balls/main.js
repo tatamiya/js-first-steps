@@ -95,7 +95,7 @@ class EvilCircle extends Shape {
 
     draw() {
         ctx.beginPath();
-        ctx.lineWidth(3);
+        ctx.lineWidth = 3;
         ctx.strokeStyle = this.color;
         ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
         ctx.stroke();
@@ -149,16 +149,30 @@ class EvilCircle extends Shape {
     }
 }
 
+let evilCircle = new EvilCircle(
+    random(0 + 10, width - 10),
+    random(0 + 10, height - 10),
+    true
+);
+evilCircle.setControls();
+
 function loop() {
     ctx.fillStyle = 'rgba(0,0,0,0.25)';
     ctx.fillRect(0, 0, width, height);
 
     for (let i = 0; i < balls.length; i++) {
+        if (!(balls[i].exists)) {
+            continue;
+        }
         balls[i].draw();
         balls[i].update();
         balls[i].collisionDetect();
 
     }
+    evilCircle.draw();
+    evilCircle.checkBounds();
+    evilCircle.collisionDetect();
+
     requestAnimationFrame(loop);
 }
 
