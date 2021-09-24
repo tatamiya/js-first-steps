@@ -69,6 +69,23 @@ class Ball extends Shape {
     }
 }
 
+
+let balls = [];
+
+while (balls.length < 25) {
+    let size = random(10, 20);
+    let ball = new Ball(
+        random(0 + size, width - size),
+        random(0 + size, height - size),
+        random(-7, 7),
+        random(-7, 7),
+        'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')',
+        size,
+        true,
+    );
+    balls.push(ball);
+}
+
 class EvilCircle extends Shape {
     constructor(x, y, exists) {
         super(x, y, 20, 20, exists)
@@ -130,22 +147,6 @@ class EvilCircle extends Shape {
             }
         }
     }
-}
-
-let balls = [];
-
-while (balls.length < 25) {
-    let size = random(10, 20);
-    let ball = new Ball(
-        random(0 + size, width - size),
-        random(0 + size, height - size),
-        random(-7, 7),
-        random(-7, 7),
-        'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')',
-        size,
-        true,
-    );
-    balls.push(ball);
 }
 
 function loop() {
