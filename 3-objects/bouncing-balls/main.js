@@ -4,6 +4,9 @@ const ctx = canvas.getContext('2d');
 const width = canvas.width = window.innerWidth;
 const height = canvas.height = window.innerHeight;
 
+const para = document.querySelector('p');
+const countText = para.textContent;
+
 function random(min, max) {
     const num = Math.floor(Math.random() * (max - min + 1)) + min;
     return num;
@@ -71,6 +74,7 @@ class Ball extends Shape {
 
 
 let balls = [];
+let ballsCount = 0;
 
 while (balls.length < 25) {
     let size = random(10, 20);
@@ -84,6 +88,8 @@ while (balls.length < 25) {
         true,
     );
     balls.push(ball);
+    ballsCount += 1;
+    para.textContent = countText + ballsCount;
 }
 
 class EvilCircle extends Shape {
@@ -143,6 +149,8 @@ class EvilCircle extends Shape {
 
                 if (distance < this.size + balls[j].size) {
                     balls[j].exists = false;
+                    ballsCount -= 1;
+                    para.textContent = countText + ballsCount;
                 }
             }
         }
