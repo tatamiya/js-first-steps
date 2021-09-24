@@ -75,6 +75,61 @@ class EvilCircle extends Shape {
         this.color = 'white';
         this.size = 10;
     }
+
+    draw() {
+        ctx.beginPath();
+        ctx.lineWidth(3);
+        ctx.strokeStyle = this.color;
+        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+        ctx.stroke();
+    }
+
+    checkBounds() {
+        if ((this.x + this.size) >= width) {
+            this.x = -(this.size);
+        }
+
+        if ((this.x - this.size) <= 0) {
+            this.x = +(this.size);
+        }
+
+        if ((this.y + this.size) >= height) {
+            this.y = -(this.size);
+        }
+
+        if ((this.y - this.size) <= 0) {
+            this.y = +(this.size);
+        }
+    }
+
+    setControls() {
+        let _this = this;
+        window.onkeydown = function (e) {
+            if (e.key === 'a') {
+                _this.x -= _this.velX;
+            } else if (e.key === 'd') {
+                _this.x += _this.velX;
+            } else if (e.key === 'w') {
+                _this.y -= _this.velY;
+            } else if (e.key === 's') {
+                _this.y += _this.velY;
+            }
+        }
+    }
+
+    collisionDetect() {
+        for (let j = 0; j < balls.length; j++) {
+            if (balls[j].exists) {
+                const dx = this.x - balls[j].x;
+                const dy = this.y - balls[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < this.size + balls[j].size) {
+                    balls[j].exists = false;
+                }
+            }
+        }
+    }
 }
 
 let balls = [];
