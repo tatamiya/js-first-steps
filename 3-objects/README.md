@@ -8,3 +8,6 @@ https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects
 - [Working with JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
   - ./working-with-json
 - [Object building practice](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_building_practice)
+  - ./bouncing-balls
+- [Adding features to our bouncing balls demo](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Adding_bouncing_balls_features)
+  - ./bouncing-balls
