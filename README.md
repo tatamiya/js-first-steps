@@ -8,3 +8,6 @@ Based on [JavaScript — Dynamic client-side scripting](https://developer.mozill
 
 3. [Introducing JavaScript objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects)
     - ./3-objects
+
+5. [Client-side web APIs](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs)
+    - ./5-client-side-wep-apis
