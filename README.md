@@ -1,5 +1,8 @@
-# js-first-steps
-Based on [JavaScript — Dynamic client-side scripting](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
+# JavaScript Tutorials
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript
+
+## For complete beginners
 
 1. [JavaScript First Steps](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps)
     - ./1-first-steps
@@ -11,3 +14,7 @@ Based on [JavaScript — Dynamic client-side scripting](https://developer.mozill
 
 5. [Client-side web APIs](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs)
     - ./5-client-side-wep-apis
+
+## Intermediate
+
+1. [Understanding client-side JavaScript frameworks](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks)
