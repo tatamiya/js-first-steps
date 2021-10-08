@@ -20,6 +20,9 @@ function App(props) {
       key={task.id}
     />
   ));
+
+  const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task';
+  const headingText = `${taskList.length} ${tasksNoun} remaining`;
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
@@ -30,7 +33,7 @@ function App(props) {
         <FilterButton />
       </div>
       <h2 id="list-heading">
-        3 tasks remaining
+        {headingText}
       </h2>
       <ul
         role="list"
