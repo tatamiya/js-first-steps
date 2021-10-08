@@ -6,12 +6,13 @@ function Form(props) {
     const [name, setName] = useState('');
 
     function handleChange(e) {
-        console.log(e.target.value);
+        setName(e.target.value);
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        props.addTask("Say hello!");
+        props.addTask(name);
+        setName("");
     }
     return (
         <form onSubmit={handleSubmit}>
