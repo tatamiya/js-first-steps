@@ -28,7 +28,7 @@ export default function Todo(props) {
     );
 
     const viewTemplate = (
-        <li className="stack-small">
+        <div className="stack-small">
             <div className="c-cb">
                 <input
                     id={props.id}
@@ -52,7 +52,7 @@ export default function Todo(props) {
                     Delete <span className="visually-hidden">{props.name}</span>
                 </button>
             </div>
-        </li>
+        </div>
     );
     return (
         <li className="todo stack-small">
