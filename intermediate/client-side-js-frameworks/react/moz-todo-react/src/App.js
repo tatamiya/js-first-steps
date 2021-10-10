@@ -7,6 +7,16 @@ import Todo from "./components/Todo";
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
 
+  function editTask(is, newName) {
+    const editedTaskList = tasks.map(task => {
+      if (id === task.id) {
+        return { ...task, name: newName }
+      }
+      return task
+    });
+    setTasks(editedTaskList);
+  }
+
   function addTask(name) {
     const newTask = { id: "todo-" + nanoid(), name: name, completed: false };
     setTasks([...tasks, newTask]);
@@ -35,6 +45,7 @@ function App(props) {
       key={task.id}
       toggleTaskCompleted={toggleTaskCompleted}
       deleteTask={deleteTask}
+      editTask={editTask}
     />
   ));
 
