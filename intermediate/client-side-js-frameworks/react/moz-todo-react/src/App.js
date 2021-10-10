@@ -7,7 +7,7 @@ import Todo from "./components/Todo";
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
 
-  function editTask(is, newName) {
+  function editTask(id, newName) {
     const editedTaskList = tasks.map(task => {
       if (id === task.id) {
         return { ...task, name: newName }
