@@ -10,8 +10,10 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 // set up mongoose connection
+require('dotenv').config()
+const PASSWORD = process.env.PASSWORD
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://tatamiya:<password>@cluster0.r43xr.mongodb.net/local_library?retryWrites=true&w=majority';
+var mongoDB = `mongodb+srv://tatamiya:${PASSWORD}@cluster0.r43xr.mongodb.net/local_library?retryWrites=true&w=majority`;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
