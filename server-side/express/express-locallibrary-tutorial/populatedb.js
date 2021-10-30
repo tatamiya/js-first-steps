@@ -72,10 +72,10 @@ function bookCreate(title, summary, isbn, author, genre, cb) {
 
   var book = new Book(bookdetail);
   book.save(function (err) {
-    if (err) {
-      cb(err, null)
-      return
-    }
+    //if (err) {
+    //  cb(err, null)
+    //  return
+    //}
     console.log('New Book: ' + book);
     books.push(book)
     cb(null, book)
