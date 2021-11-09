@@ -21,11 +21,11 @@ AuthorSchema
 AuthorSchema.virtual('lifespan').get(function () {
     var lifetime_string = '';
     if (this.date_of_birth) {
-        lifetime_string = DateTime.fromJSDATE(this.date_of_birth).toLocalString(DateTime.DATE_MED);
+        lifetime_string = DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATE_MED);
     }
     lifetime_string += ' - ';
-    if (this.date_of_birth) {
-        lifetime_string += DateTime.fromJSDATE(this.date_of_death).toLocalString(DateTime.DATE_MED)
+    if (this.date_of_death) {
+        lifetime_string += DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED);
     }
     return lifetime_string;
 });
