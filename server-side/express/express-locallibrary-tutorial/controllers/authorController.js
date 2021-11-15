@@ -114,8 +114,18 @@ exports.author_delete_post = function (req, res, next) {
     );
 };
 
-exports.author_update_get = function (req, res) {
-    res.send('NOT IMPLEMENTED: Author update GET');
+exports.author_update_get = function (req, res, next) {
+
+    Author.findById(req.params.id).exec(function (err, author) {
+        if (err) { return next(err); }
+        if (author == null) {
+            var err = new Error('Author not found');
+            err.status = 404;
+            return next(err);
+        }
+        res.render('author_form', { title: 'Update Author', author: author });
+    }
+    );
 };
 
 exports.author_update_post = function (req, res) {
