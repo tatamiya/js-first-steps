@@ -120,6 +120,34 @@ exports.bookinstance_update_get = function (req, res) {
     );
 };
 
-exports.bookinstance_update_post = function (req, res) {
-    res.send('NOT IMPLEMENTED: BookInstance update POST');
-};
+exports.bookinstance_update_post = [
+    body('book', 'Book must be specified').trim().isLength({ min: 1 }).escape(),
+    body('imprint', 'Imprint must be specified').trim().isLength({ min: 1 }).escape(),
+    body('status').escape(),
+    body('due_back_formatted', 'Invalid date').optional({ checkFalsy: true }).isISO8601().toDate(),
+
+    (req, res, next) => {
+        const errors = validationResult(req);
+
+        var bookinstance = new BookInstance(
+            {
+                book: req.body.book,
+                imprint: req.body.imprint,
+                status: req.body.status,
+                due_back_formatted: req.body.due_back_formatted,
+                _id: req.params.id
+            }
+        );
+
+        if (!errors.isEmpty()) {
+            res.render('bookinstance_form', { title: 'Update BookInstance', book_list: books, selected_book: bookinstance.book._id, errors: errors.array(), bookinstance: bookinstance });
+            return;
+        }
+        else {
+            BookInstance.findByIdAndUpdate(req.params.id, bookinstance, {}, function (err, thebookinstance) {
+                if (err) { return next(err); }
+                res.redirect(thebookinstance.url);
+            });
+        }
+    }
+];
