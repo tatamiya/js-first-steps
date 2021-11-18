@@ -24,6 +24,7 @@ block content
         div.form-group
             lable(for='status') Status:
             select#status.form-control(type='select' placeholder='Select status' name='status' required='true')
+                // TODO: select the status if book is not null
                 option(value='Maintenance') Maintenance
                 option(value='Available') Available
                 option(value='Loaned') Loaned
